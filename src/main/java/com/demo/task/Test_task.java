@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Test_task {
 	//@Component 注册为spring组件
+    //*/5 * * * * ?  5秒执行一次
 	@Scheduled(cron="0 */1 * * * ?")
 	public void Test_task(){
 

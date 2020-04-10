@@ -33,5 +33,6 @@ public class IndexController extends BaseController{
         List<user> list = userService.selectAll(InquiryCondition);
         request.setAttribute("list",list);
         return "index";
+
     }
 }

@@ -48,6 +48,8 @@ public class Test_task {
 		System.out.println("每5毫秒执行fixedDelay一次："+ DateUtils.dateToString(new Date(),"yyyy-MM-dd HH:mm:ss"));
 	}
 
+	//@Scheduled(initialDelay = 10000,fixedRate = 15000,这个定时器就是在上一个的基础上加了一个
+	// initialDelay = 10000 意思就是在容器启动后,延迟10秒后再执行一次定时器,以后每15秒再执行一次该定时器
 	@Scheduled(initialDelay = 1000,fixedRate = 5000)
 	public void initialDelay(){
 		System.out.println("华丽的分割符----"+DateUtils.dateToString(new Date(),"yyyy-MM-dd HH:mm:ss"));

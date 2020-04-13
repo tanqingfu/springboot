@@ -1,4 +1,3 @@
-/*
 package com.demo.controller;
 
 import java.io.IOException;
@@ -13,6 +12,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.qq.connect.QQConnectException;
+import com.qq.connect.api.OpenID;
+import com.qq.connect.api.qzone.PageFans;
+import com.qq.connect.api.qzone.UserInfo;
+import com.qq.connect.javabeans.AccessToken;
+import com.qq.connect.javabeans.qzone.PageFansBean;
+import com.qq.connect.javabeans.qzone.UserInfoBean;
+import com.qq.connect.javabeans.weibo.Company;
+import com.qq.connect.oauth.Oauth;
 
 @Controller
 public class QQloginController extends BaseController{
@@ -36,15 +45,13 @@ public class QQloginController extends BaseController{
 		
 	}
 	
-	*/
-/**
+	/**
 	 * 请求跳转到QQ登录授权
 	 * @param model
 	 * @param request
 	 * @param response
 	 * @throws IOException
-	 *//*
-
+	 */
 	@RequestMapping(value = "/get_qqlogin", method = RequestMethod.POST)
 	public void get_qqlogin(ModelMap model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
@@ -59,15 +66,13 @@ public class QQloginController extends BaseController{
         response.getWriter().write(msg);
 	}
 	
-	*/
-/**
+	/**
 	 * QQ授权登录回调地址
 	 * @param model
 	 * @param request
 	 * @param response
 	 * @throws IOException
-	 *//*
-
+	 */
 	@RequestMapping(value = "/qqlogin_data", method = RequestMethod.GET)
 	public String qqlogin_data(ModelMap model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
@@ -140,15 +145,13 @@ public class QQloginController extends BaseController{
 	   
 	  //如果用户放弃验证，或者验证失败，则生成新的本地用户，并生成新的用户名，绑定uid与openid。写入cookie，使用户为登录状态，到此结束。
 
-	*/
-/**
+	/**
 	 * 通过前端JS保存QQ登录成功用户信息
 	 * @param model
 	 * @param request
 	 * @param response
 	 * @throws IOException
-	 *//*
-
+	 */
 	@RequestMapping(value = "/save_qqlogindata", method = RequestMethod.POST)
 	public void save_qqlogindata(ModelMap model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
@@ -161,4 +164,3 @@ public class QQloginController extends BaseController{
 		
 	}
 }
-*/

@@ -55,13 +55,13 @@
 <script>
     layui.use(["form","laydate"],function () {
        var laydate = layui.laydate;
-       //var layer = layui.layer;
+       var layer = layui.layer;
         var form = layui.form;
         //执行一个laydate实例
         laydate.render({
             elem: '#start' //指定元素
         });
-        //layer.msg("layer你好",{icon:6});
+        layer.msg("layer你好",{icon:6});
     })
 
 </script>

@@ -25,32 +25,32 @@ public class Test_task {
 	*/
 
 
-	@Scheduled(cron="0 */1 * * * ?")
+	//@Scheduled(cron="0 */1 * * * ?")
 	public void Test_task(){
 		//System.out.println("定时1分钟执行一次");
 	}
 
 	//*/5 * * * * ?  5秒执行一次
-	@Scheduled(cron = "*/5 * * * * ?")
+	//@Scheduled(cron = "*/5 * * * * ?")
 	public  void time(){
 		//System.out.println("每5秒执行一次："+ DateUtils.dateToString(new Date(),"yyyy-MM-dd HH:mm:ss"));
 	}
 
 	//fixedRate 定义一个按一定频率执行的定时任务
-	@Scheduled(fixedRate = 5000)
+	//@Scheduled(fixedRate = 5000)
 	public  void fixedRate(){
 		System.out.println("每5毫秒执行fixedRate一次："+ DateUtils.dateToString(new Date(),"yyyy-MM-dd HH:mm:ss"));
 	}
 
 	//fixedDelay 定义一个按一定频率执行的定时任务，与上面不同的是，改属性可以配合initialDelay， 定义该任务延迟执行时间。
-	@Scheduled(fixedDelay = 5000)
+	//@Scheduled(fixedDelay = 5000)
 	public  void fixedDelay(){
 		System.out.println("每5毫秒执行fixedDelay一次："+ DateUtils.dateToString(new Date(),"yyyy-MM-dd HH:mm:ss"));
 	}
 
 	//@Scheduled(initialDelay = 10000,fixedRate = 15000,这个定时器就是在上一个的基础上加了一个
 	// initialDelay = 10000 意思就是在容器启动后,延迟10秒后再执行一次定时器,以后每15秒再执行一次该定时器
-	@Scheduled(initialDelay = 1000,fixedRate = 5000)
+	//@Scheduled(initialDelay = 1000,fixedRate = 5000)
 	public void initialDelay(){
 		System.out.println("华丽的分割符----"+DateUtils.dateToString(new Date(),"yyyy-MM-dd HH:mm:ss"));
 	}

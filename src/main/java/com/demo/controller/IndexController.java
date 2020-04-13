@@ -1,5 +1,6 @@
 package com.demo.controller;
 
+import com.demo.common.Globals;
 import com.demo.common.InquiryCondition;
 import com.demo.meta.user;
 import com.demo.service.userService;
@@ -32,6 +33,7 @@ public class IndexController extends BaseController{
         setPagePrmt_line(request, InquiryCondition, total, "1", 10);
         List<user> list = userService.selectAll(InquiryCondition);
         request.setAttribute("list",list);
+        System.out.println(Globals.WWW_HOST);
         return "index";
 
     }

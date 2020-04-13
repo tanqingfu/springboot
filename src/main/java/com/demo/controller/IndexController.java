@@ -39,18 +39,33 @@ public class IndexController extends BaseController{
         return "index";
 
     }
+
+    /**
+     * 获取数据 带分页
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     @RequestMapping(value = "/getData",method = RequestMethod.POST)
     public void getData(HttpServletRequest request,HttpServletResponse response) throws  IOException{
         response.setContentType("text/html;charset=UTF-8"); //解决返回数据中文出现乱码
         InquiryCondition InquiryCondition = new InquiryCondition();
-        int total = userService.countALL(InquiryCondition);
-        setPagePrmt_line(request, InquiryCondition, total, "1", 10);
-        List<user> list = userService.selectAll(InquiryCondition);
+        String size = "10";//request.getParameter("size");
+        String page = "1";//request.getParameter("page");
         PrintWriter out = null;
-        out = response.getWriter();
         JsonData JsonData = new JsonData();
-        if(list.size()>0){
-            JsonData = new JsonData(Globals.SUCCESS,"",list,total);
+        try {
+            int total = userService.countALL(InquiryCondition);
+            setPagePrmt_line(request, InquiryCondition, total, page, Integer.parseInt(size));
+            List<user> list = userService.selectAll(InquiryCondition);
+            out = response.getWriter();
+            if(list.size()>0){
+                JsonData = new JsonData(Globals.SUCCESS,"",list,total);
+            }else{
+                JsonData = new JsonData(Globals.SYSTEM_BUSY,"","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         out.write(JsonData.toJsonString());
 

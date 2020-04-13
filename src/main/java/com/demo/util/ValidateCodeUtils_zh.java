@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 生成验证码(汉字)
  * 
- * @author 冰雨凌風
+ * @author tqf
  * 
  */
 @WebServlet(name = "ValidateCodeUtils_zh",urlPatterns = "/ValidateCodeUtils_zh")

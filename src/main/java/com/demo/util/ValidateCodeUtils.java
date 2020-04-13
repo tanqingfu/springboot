@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author waa
  * @version V1.0, 日期2011-7-4
  */
-@WebServlet(name = "ValidateCodeUtils",urlPatterns = "/first")
+@WebServlet(name = "ValidateCodeUtils",urlPatterns = "/ValidateAlphanumeric")
 public class ValidateCodeUtils extends HttpServlet {
 
 	private static final long serialVersionUID = -1409007752285164213L;

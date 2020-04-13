@@ -10,6 +10,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author waa
  * @version V1.0, 日期2011-7-4
  */
+@WebServlet(name = "ValidateCodeUtils_algorithm",urlPatterns = "/ValidateCodeUtils_algorithm")
 public class ValidateCodeUtils_algorithm extends HttpServlet {
 
 	private static final long serialVersionUID = -1409007752285164213L;

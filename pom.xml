@@ -57,6 +57,13 @@
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
 
+       <!-- 配置spring热部署-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <!--按如下方式引入每一个第三方的jar包，其中${project.basedir}指当前项目的根目录-->
         <dependency>
             <groupId>com.test</groupId>
@@ -91,6 +98,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 function flushVerifyImg() {
 	var timenow = new Date().getTime(); 
-    $("#VerifyImg").attr("src", '/servlet/Validate?d=' + timenow);
+    $("#VerifyImg").attr("src", '/ValidateAlphanumeric?d=' + timenow);
     return false;
 }
 

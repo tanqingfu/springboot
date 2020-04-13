@@ -3,6 +3,7 @@ package com.demo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @SpringBootApplication
 @MapperScan(basePackages="com.demo.dao")
 @EnableScheduling
+@ServletComponentScan //在springBoot启动时会扫描@WebServlet，并将该类实例化
 public class DemoApplication {
     //@EnableScheduling 开启定时任务
     //@MapperScan 添加扫描注解

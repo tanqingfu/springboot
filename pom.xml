@@ -63,6 +63,11 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>1.0.4</version>
+        </dependency>
 
         <!--按如下方式引入每一个第三方的jar包，其中${project.basedir}指当前项目的根目录-->
         <dependency>

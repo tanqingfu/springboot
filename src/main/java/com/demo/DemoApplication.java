@@ -3,8 +3,11 @@ package com.demo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +20,16 @@ import javax.servlet.http.HttpServletResponse;
 @MapperScan(basePackages="com.demo.dao")
 @EnableScheduling
 @ServletComponentScan //在springBoot启动时会扫描@WebServlet，并将该类实例化  用于生产验证码图片的
-public class DemoApplication {
+public class DemoApplication extends SpringBootServletInitializer {
     //@EnableScheduling 开启定时任务
     //@MapperScan 添加扫描注解
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         SpringApplication.run(DemoApplication.class, args);
+    }
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(DemoApplication.class);
     }
 
 }

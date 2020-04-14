@@ -8,7 +8,7 @@
 
     </select>
 
-    <select id="selectAll" parameterType="com.demo.common.InquiryCondition"  resultType="user">
+    <select id="selectAll" parameterType="com.demo.common.InquiryCondition"  resultType="com.demo.meta.user">
         select * from users limit #{page.startNum},#{page.endNum};
     </select>
 

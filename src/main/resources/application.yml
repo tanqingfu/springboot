@@ -23,5 +23,12 @@ spring:
 mybatis:
   type-aliases-package: com.demo.meta
   mapper-locations: classpath:mapper/*.xml
+  #配置打印sql语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 ####### 下面是整合mybatis end
 
+#####配置打印sql语句  com.demo.dao是你的接口路径
+logging:
+  level:
+      com.demo.dao : debug

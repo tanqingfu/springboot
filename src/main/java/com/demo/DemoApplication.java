@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @SpringBootApplication
 @MapperScan(basePackages="com.demo.dao")
 @EnableScheduling
-//@ServletComponentScan //在springBoot启动时会扫描@WebServlet，并将该类实例化  用于生产验证码图片的
+@ServletComponentScan //在springBoot启动时会扫描@WebServlet，并将该类实例化  用于生产验证码图片的
 public class DemoApplication extends SpringBootServletInitializer {
     //@EnableScheduling 开启定时任务
     //@MapperScan 添加扫描注解

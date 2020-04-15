@@ -40,3 +40,9 @@ mybatis:
 logging:
   level:
       com.demo.dao : debug
+###### 配置分页插件
+#pagehelper:
+#  dialect: mysql
+#  params: countSql
+#  reasonable: true
+#  support-methods-arguments: true

@@ -1,5 +1,6 @@
 package com.demo.filter;
 
+import com.demo.meta.user;
 import com.demo.util.DateUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -7,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Date;
 
 @Component
@@ -25,6 +27,16 @@ public class BaseInterceptor implements HandlerInterceptor {
         System.out.println("开始拦截.........");
         request.setAttribute("time", DateUtils.dateToString(new Date(),"yyyy-MM-dd HH:mm:ss"));
         //业务代码
+        /*try {
+            //统一拦截（查询当前session是否存在user）(这里user会在每次登陆成功后，写入session)
+            user user=(user)request.getSession().getAttribute("USER");
+            if(user!=null){
+                return true;
+            }
+            response.sendRedirect(request.getContextPath()+"login");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
         return true;
     }
     /**

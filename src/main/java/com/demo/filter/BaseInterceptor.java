@@ -35,7 +35,8 @@ public class BaseInterceptor implements HandlerInterceptor {
             if(user!=null){
                 return true;
             }
-            response.sendRedirect(request.getContextPath()+"login");
+            response.sendRedirect(request.getContextPath()+"test");
+            return  false;
         } catch (IOException e) {
             e.printStackTrace();
         }*/

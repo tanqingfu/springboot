@@ -40,6 +40,10 @@ public class IndexController extends BaseController{
 
     }
 
+    @RequestMapping(value = "/test",method = RequestMethod.GET)
+    public  String test (HttpServletRequest request, HttpServletResponse response) throws IOException{
+        return  "test";
+    }
     /**
      * 获取数据 带分页
      * @param request

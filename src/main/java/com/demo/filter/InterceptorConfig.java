@@ -2,9 +2,11 @@ package com.demo.filter;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+
 @Configuration
-public class InterceptorConfig extends WebMvcConfigurerAdapter {
+//SpringBoot2.0及Spring 5.0 WebMvcConfigurerAdapter已被废弃  改用WebMvcConfigurationSupport
+public class InterceptorConfig extends WebMvcConfigurationSupport {
     @Override
     /*1:创建一个新类，InterceptorConfig
     2:实现WebMvcConfigurer

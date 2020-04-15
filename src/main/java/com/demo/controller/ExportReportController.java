@@ -1,3 +1,4 @@
+/*
 package com.demo.controller;
 
 import java.io.IOException;
@@ -31,21 +32,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 
+*/
 /**
  * 报表相关
  * @author tqf
  * @version V1.0, 创建日期：2017-05-04
- */
+ *//*
+
 @Controller
 public class ExportReportController extends BaseController {
-	
-	/**
+
+	*/
+/**
 	 * 导出报表
 	 * @param model
 	 * @param request
 	 * @param response
-	 * @throws IOException 
-	 */
+	 * @throws IOException
+	 *//*
+
 	@RequestMapping(value="/exportReport", method = RequestMethod.POST)
 	public void allAcountsData(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		String msg = "";
@@ -71,7 +76,7 @@ public class ExportReportController extends BaseController {
 			String random = DateUtils.dateToString(new Date(), "yyyyMMddHHmmss");
 			String filePath = "";
 //			String filePath = request.getParameter("file");
-			
+
 //			//工作表的类型
 //			String type = request.getParameter("type");
 //			if(type != null && !"".equals(type)){
@@ -81,26 +86,26 @@ public class ExportReportController extends BaseController {
 			WritableWorkbook wwb;
 			response.setContentType("application/force-download");
 			response.setContentType("application/vnd.ms-excel");
-			
+
 			response.setContentType("text/html;charset=UTF-8");
-			
+
 			OutputStream os = response.getOutputStream();
-			
+
 			wwb = Workbook.createWorkbook(os);
 			//添加第一个工作表并设置第一个Sheet的名字
 			WritableSheet sheet = wwb.createSheet("用户方案记录", 0);
 			//WritableSheet sheet2 = wwb.createSheet("用户方案记录", 1);
 			jxl.write.Label label ;
-			
-			WritableFont fontTitle = new WritableFont(WritableFont.TIMES, 9, WritableFont.NO_BOLD);  
-			WritableCellFormat wc = new WritableCellFormat(fontTitle); 
+
+			WritableFont fontTitle = new WritableFont(WritableFont.TIMES, 9, WritableFont.NO_BOLD);
+			WritableCellFormat wc = new WritableCellFormat(fontTitle);
 			//单元格的文字按照单元格的列宽来自动换行显示。
-//			wc.setWrap(true);  
-			// 设置居中  
-			wc.setAlignment(Alignment.CENTRE);  
-			// 设置边框线  
-			wc.setBorder(Border.ALL, BorderLineStyle.THIN);  
-			// 设置单元格的背景颜色  
+//			wc.setWrap(true);
+			// 设置居中
+			wc.setAlignment(Alignment.CENTRE);
+			// 设置边框线
+			wc.setBorder(Border.ALL, BorderLineStyle.THIN);
+			// 设置单元格的背景颜色
 //			wc.setBackground(jxl.format.Colour.RED);
 			for(int i =0;i<title.length;i++){
 				//Lable(x,y,z)代表单元格的第x+1列,y+1行，内容z
@@ -115,22 +120,26 @@ public class ExportReportController extends BaseController {
 			}else{
 				fileName = "用户数据记录";
 			}
-				
+
 				List<String> list = null;
-				/*if (projectId != null && !"".equals(projectId)) {
+				*/
+/*if (projectId != null && !"".equals(projectId)) {
 					list = schemeService.allselectByUserId(inquiryCondition);
 				}else{
 					list = schemeService.allselectByUserId(inquiryCondition);
-				}*/
+				}*//*
+
 				//ExportReportController controller = new ExportReportController();
-				/**
+				*/
+/**
 				 * 保存数字到单元格，需要使用jxl.write.Number
 				 * 必须使用其完整路径，否则会出现错误
-				 */
+				 *//*
+
 				sheet = this.addCheckAllAccounts(sheet, list, wc, sdf);
 				//充值记录
-			
-			
+
+
 			filePath=fileName+random+".xls";
 			String agent = request.getHeader("USER-AGENT"); //获取浏览器的信息
 			if(agent != null && agent.toLowerCase().indexOf("firefox")>0){
@@ -149,9 +158,9 @@ public class ExportReportController extends BaseController {
 			//写入数据
 			wwb.write();
 			wwb.close();
-				
-//			long end = System.currentTimeMillis();   
-//			System.out.println("----完成该操作共用的时间是:"+(end-start)/1000);  
+
+//			long end = System.currentTimeMillis();
+//			System.out.println("----完成该操作共用的时间是:"+(end-start)/1000);
 			msg = "报表所在的位置为："+filePath;
 		} catch (Exception e) {
 			//Log.error("导出报表", e);
@@ -159,8 +168,9 @@ public class ExportReportController extends BaseController {
 		}
 		response.getWriter().write(msg);
 	}
-	
-	/**
+
+	*/
+/**
 	 * 查看所有账户添加到excel表格中
 	 * @param sheet
 	 * @param
@@ -168,15 +178,17 @@ public class ExportReportController extends BaseController {
 	 * @param sdf
 	 * @return
 	 * @throws Exception
-	 */
+	 *//*
+
 	private  WritableSheet addCheckAllAccounts(WritableSheet sheet ,List<String> list,WritableCellFormat wc,SimpleDateFormat sdf) throws Exception{
 		jxl.write.Label label ;
 		if(list != null){
-			CellView cellView = new CellView();  
+			CellView cellView = new CellView();
 		    cellView.setAutosize(true); //设置自动大小
-			/*for(int i =0 ; i<list.size();i++){
+			*/
+/*for(int i =0 ; i<list.size();i++){
 				SchemeVo schemeVo = list.get(i);
-				//sheet.setColumnView(i, cellView);//根据内容自动设置列宽  
+				//sheet.setColumnView(i, cellView);//根据内容自动设置列宽
 				//Lable(x,y,z)代表单元格的第x+1列,y+1行，内容z
 				//在Label对象的子对象中指明单元格的位置和内容
 				//方案ID,用户ID,玩法,方案状态,是否上榜,推荐理由,方案金额,SP值,发单时间
@@ -221,30 +233,32 @@ public class ExportReportController extends BaseController {
 				sheet.addCell(label);
 				label = new jxl.write.Label(5,i+1,schemeVo.getReason()+"",wc);
 				sheet.addCell(label);
-				label = new jxl.write.Label(6,i+1,schemeVo.getCoin()+"",wc);				
+				label = new jxl.write.Label(6,i+1,schemeVo.getCoin()+"",wc);
 				sheet.addCell(label);
 				label = new jxl.write.Label(7,i+1,schemeVo.getSp()+"",wc);
 				sheet.addCell(label);
-				String  time =  DateUtils.dateToString(schemeVo.getAddTime(), 
+				String  time =  DateUtils.dateToString(schemeVo.getAddTime(),
 						"yyyy-MM-dd HH:mm:ss");//sdf.format(schemeVo.getAddTime());
 				label = new jxl.write.Label(8,i+1,time+"",wc);
 				sheet.addCell(label);
 				//单元格多个值 下拉选项
 				label = new jxl.write.Label(9,i+1,"请选择",wc);
-				List<String> angerlist = new ArrayList<String>(); 
-				  angerlist.add("销售中"); 
+				List<String> angerlist = new ArrayList<String>();
+				  angerlist.add("销售中");
 				  angerlist.add("走盘");
-				  angerlist.add("已中"); 
+				  angerlist.add("已中");
 				  angerlist.add("未中");
 				  WritableCellFeatures ws = new WritableCellFeatures();
 				  ws.setDataValidationList(angerlist);
 				  label.setCellFeatures(ws);
 				  sheet.addCell(label);
-				  
-				
+
+
 				//将定义好的单元格添加到工作表中
-			}*/
+			}*//*
+
 		}
 		return sheet ;
 	}
 }
+*/

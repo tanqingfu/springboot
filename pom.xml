@@ -37,7 +37,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+           <!-- <scope>provided</scope>-->
         </dependency>
 
         <dependency>
@@ -93,20 +93,17 @@
 
         <!--使用QQ授权登录-->
         <dependency>
-            <groupId>com.test</groupId>
-            <artifactId>test</artifactId>
-            <scope>system</scope>
-            <version>1.0</version>
-            <systemPath>${project.basedir}/src/main/resources/static/lib/Sdk4J.jar</systemPath>
+            <groupId>com.Sdk4J_tqf</groupId>
+            <artifactId>Sdk4J_tqf</artifactId>
+            <version>1.0.0</version>
+
         </dependency>
 
         <!--操作办公文档-->
         <dependency>
-            <groupId>com.test</groupId>
-            <artifactId>jxl</artifactId>
-            <scope>system</scope>
-            <version>1.0</version>
-            <systemPath>${project.basedir}/src/main/resources/static/lib/jxl.jar</systemPath>
+            <groupId>com.jxl_tqf</groupId>
+            <artifactId>jxl_tqf</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>

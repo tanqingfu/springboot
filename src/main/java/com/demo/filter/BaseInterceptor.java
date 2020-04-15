@@ -29,7 +29,9 @@ public class BaseInterceptor implements HandlerInterceptor {
         //业务代码
         /*try {
             //统一拦截（查询当前session是否存在user）(这里user会在每次登陆成功后，写入session)
-            user user=(user)request.getSession().getAttribute("USER");
+            user user=(user)request.getSession().getAttribute("user");
+            user = new user();
+            user.setNickName("和自己对话");
             if(user!=null){
                 return true;
             }

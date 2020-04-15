@@ -13,6 +13,6 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
     5:在方法内加入拦截规则，如registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**");*/
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new BaseInterceptor()).addPathPatterns("/**");
-        super.addInterceptors(registry);
+       // super.addInterceptors(registry);
     }
 }

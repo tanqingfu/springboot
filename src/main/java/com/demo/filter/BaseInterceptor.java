@@ -36,7 +36,6 @@ public class BaseInterceptor implements HandlerInterceptor {
                 return true;
             }
             response.sendRedirect(request.getContextPath()+"test");
-            return  false;
         } catch (IOException e) {
             e.printStackTrace();
         }*/

@@ -11,6 +11,10 @@ import java.util.Date;
 
 @Component
 public class BaseInterceptor implements HandlerInterceptor {
+    /*1:先创建一个类如BaseInterceptor
+    2:实现HandlerInterceptor接口
+    3:重写其方法*/
+
     /**
      * 预处理回调方法，实现处理器的预处理
      * 返回值：true表示继续流程；false表示流程中断，不会继续调用其他的拦截器或处理器

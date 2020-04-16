@@ -25,6 +25,7 @@ spring:
       default_encoding: UTF-8
       tag_syntax: auto_detect
       url_escaping_charset: UTF-8
+
 ########## 下面是整合freemarker  end
 
 ####### 下面是整合mybatis start

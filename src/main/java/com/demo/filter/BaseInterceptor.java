@@ -24,7 +24,7 @@ public class BaseInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        System.out.println("开始拦截.........");
+        //System.out.println("开始拦截.........");
         request.setAttribute("time", DateUtils.dateToString(new Date(),"yyyy-MM-dd HH:mm:ss"));
         //业务代码
         /*try {

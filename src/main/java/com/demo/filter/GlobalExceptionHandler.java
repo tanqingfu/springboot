@@ -1,60 +1,133 @@
 package com.demo.filter;
 
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.ConversionNotSupportedException;
+import org.springframework.beans.TypeMismatchException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.http.converter.HttpMessageNotWritableException;
+import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.net.BindException;
+import java.io.IOException;
 
 @ControllerAdvice
+@ResponseBody
 public class GlobalExceptionHandler {
-    /**
-     * 异常处理
-     * @param e
-     * @param request
-     * @param response
-     * @return
-     */
-    @ExceptionHandler(BindException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String onValidFail(Exception e, HttpServletRequest request, HttpServletResponse response) {
-        return "无效的请求参数";
-        //return new ResponseEntity(HttpResponse.fail("无效的请求参数").stringfy(), HttpStatus.OK);
+
+    private static final String logExceptionFormat = "Capture Exception By GlobalExceptionHandler: Code: %s Detail: %s";
+    private static Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    //运行时异常
+    @ExceptionHandler(RuntimeException.class)
+    public String runtimeExceptionHandler(RuntimeException ex) {
+        return resultFormat(1, ex);
     }
 
-    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
-    public String onMethodNotFound(Exception e, HttpServletRequest request, HttpServletResponse response) {
-        return "无效的请求方法";
-        //return new ResponseEntity(HttpResponse.fail("无效的请求方法").stringfy(), HttpStatus.OK);
+    //空指针异常
+    @ExceptionHandler(NullPointerException.class)
+    public String nullPointerExceptionHandler(NullPointerException ex) {
+        System.err.println("NullPointerException:");
+        return resultFormat(2, ex);
     }
 
-    @ExceptionHandler(value = {NoHandlerFoundException.class})
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String onHandlerNotFound(Exception e, HttpServletRequest request, HttpServletResponse response) {
-        System.out.println(404);
-        return "无效的请求路径";
-        //return new ResponseEntity(HttpResponse.fail("无效的请求路径").stringfy(), HttpStatus.OK);
+    //类型转换异常
+    @ExceptionHandler(ClassCastException.class)
+    public String classCastExceptionHandler(ClassCastException ex) {
+        return resultFormat(3, ex);
     }
 
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String onServerError(Exception e, HttpServletRequest request, HttpServletResponse response) {
-        return "服务器发生异常";
-        //return new ResponseEntity(HttpResponse.fail("服务器发生异常").detail(e.getMessage()).stringfy(), HttpStatus.OK);
+    //IO异常
+    @ExceptionHandler(IOException.class)
+    public String iOExceptionHandler(IOException ex) {
+        return resultFormat(4, ex);
     }
 
-    @ExceptionHandler(Exception.class)
-    public String onUnknownException(Exception e, HttpServletRequest request, HttpServletResponse response) {
-        return "未知异常";
-        //return new ResponseEntity(HttpResponse.fail("未知异常").detail(e.getMessage()).stringfy(), HttpStatus.OK);
+    //未知方法异常
+    @ExceptionHandler(NoSuchMethodException.class)
+    public String noSuchMethodExceptionHandler(NoSuchMethodException ex) {
+        return resultFormat(5, ex);
     }
+
+    //数组越界异常
+    @ExceptionHandler(IndexOutOfBoundsException.class)
+    public String indexOutOfBoundsExceptionHandler(IndexOutOfBoundsException ex) {
+        return resultFormat(6, ex);
+    }
+
+    //400错误
+    @ExceptionHandler({HttpMessageNotReadableException.class})
+    public String requestNotReadable(HttpMessageNotReadableException ex) {
+        System.out.println("400..requestNotReadable");
+        return resultFormat(7, ex);
+    }
+
+    //400错误
+    @ExceptionHandler({TypeMismatchException.class})
+    public String requestTypeMismatch(TypeMismatchException ex) {
+        System.out.println("400..TypeMismatchException");
+        return resultFormat(8, ex);
+    }
+
+    //400错误
+    @ExceptionHandler({MissingServletRequestParameterException.class})
+    public String requestMissingServletRequest(MissingServletRequestParameterException ex) {
+        System.out.println("400..MissingServletRequest");
+        return resultFormat(9, ex);
+    }
+
+    //405错误
+    @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
+    public String request405(HttpRequestMethodNotSupportedException ex) {
+        return resultFormat(10, ex);
+    }
+
+    //406错误
+    @ExceptionHandler({HttpMediaTypeNotAcceptableException.class})
+    public String request406(HttpMediaTypeNotAcceptableException ex) {
+        System.out.println("406...");
+        return resultFormat(11, ex);
+    }
+
+    //500错误
+    @ExceptionHandler({ConversionNotSupportedException.class, HttpMessageNotWritableException.class})
+    public String server500(RuntimeException ex) {
+        System.out.println("500...");
+        return resultFormat(12, ex);
+    }
+
+    //栈溢出
+    @ExceptionHandler({StackOverflowError.class})
+    public String requestStackOverflow(StackOverflowError ex) {
+        return resultFormat(13, ex);
+    }
+
+    //除数不能为0
+    @ExceptionHandler({ArithmeticException.class})
+    public String arithmeticException(ArithmeticException ex) {
+        return resultFormat(13, ex);
+    }
+
+
+    //其他错误
+    @ExceptionHandler({Exception.class})
+    public String exception(Exception ex) {
+        return resultFormat(14, ex);
+    }
+
+    private <T extends Throwable> String resultFormat(Integer code, T ex) {
+        ex.printStackTrace();
+        log.error(String.format(logExceptionFormat, code, ex.getMessage()));
+        return JsonResult.failed(code, ex.getMessage());
+    }
+
 }
 
 

@@ -74,4 +74,5 @@ public class IndexController extends BaseController{
         out.write(JsonData.toJsonString());
 
     }
+
 }

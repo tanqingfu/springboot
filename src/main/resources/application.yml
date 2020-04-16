@@ -29,7 +29,7 @@ spring:
 
 ####### 下面是整合mybatis start
 mybatis:
-  type-aliases-package: com.demo.meta
+  type-aliases-package: com.demo.meta,com.demo.vo
   mapper-locations: classpath:mapper/*.xml
   #配置打印sql语句
   configuration:

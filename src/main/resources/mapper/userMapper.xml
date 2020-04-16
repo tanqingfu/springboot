@@ -11,5 +11,10 @@
     <select id="selectAll" parameterType="com.demo.common.InquiryCondition"  resultType="com.demo.meta.user">
         select * from users limit #{page.startNum},#{page.endNum};
     </select>
+    
+    <select id="test"  parameterType="com.demo.common.InquiryCondition" resultType="userVo">
+      select * from users limit #{page.startNum},#{page.endNum};
+
+    </select>
 
 </mapper>

@@ -35,6 +35,7 @@ public class IndexController extends BaseController{
         setPagePrmt_line(request, InquiryCondition, total, "1", 10);
         List<user> list = userService.selectAll(InquiryCondition);
         request.setAttribute("list",list);
+        //int a = 1/0; 除数不能为0异常
         System.out.println(Globals.WWW_HOST);
         return "index";
 

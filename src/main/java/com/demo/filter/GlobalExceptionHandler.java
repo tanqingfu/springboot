@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.IOException;
 
 @ControllerAdvice
-@ResponseBody
 public class GlobalExceptionHandler {
 
     private static final String logExceptionFormat = "Capture Exception By GlobalExceptionHandler: Code: %s Detail: %s";
@@ -112,6 +111,7 @@ public class GlobalExceptionHandler {
     //除数不能为0
     @ExceptionHandler({ArithmeticException.class})
     public String arithmeticException(ArithmeticException ex) {
+        System.out.println("除数不能为0");
         return resultFormat(13, ex);
     }
 

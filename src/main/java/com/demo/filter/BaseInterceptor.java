@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Date;
 
 @Component
-public class BaseInterceptor implements HandlerInterceptor {
+public class BaseInterceptor implements HandlerInterceptor { //extends HandlerInterceptorAdapter
     /*1:先创建一个类如BaseInterceptor
     2:实现HandlerInterceptor接口
     3:重写其方法*/

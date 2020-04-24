@@ -21,7 +21,7 @@ public class onLineCount implements HttpSessionListener {
     public void sessionDestroyed(HttpSessionEvent se) {
         count--;
         se.getSession().setAttribute("count",count);
-        System.out.println("线上有几个人："+se.getSession().getAttribute("count"));
+        System.out.println("下线之后还有几个人："+se.getSession().getAttribute("count"));
 
     }
 }
